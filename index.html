@@ -1,175 +1,309 @@
-<html lang="en">
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg viewBox='0 0 40 40' width='36' height='36' aria-hidden='true'%3E%3Cdefs%3E%3ClinearGradient id='w3g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232f6bff'/%3E%3Cstop offset='1' stop-color='%238b4dff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='40' height='40' rx='10' fill='url(%23w3g)'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.6' opacity='.9'%3E%3Ccircle cx='20' cy='20' r='12'/%3E%3Cellipse cx='20' cy='20' rx='5.2' ry='12'/%3E%3Cpath d='M8 20h24M10 14h20M10 26h20'/%3E%3C/g%3E%3Ccircle cx='20' cy='20' r='3.2' fill='%23fff'/%3E%3C/svg%3E"><title>W3 Basics</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Nunito+Sans:wght@400;600&display=swap">
+<style>
+/* Layout: alternating navy and white bands, bold geometric headlines, two-column text + graphic, blue-to-purple accents. Committed single look. */
+:root{--navy:#0c1630;--navy2:#111d3d;--ink:#0b1020;--paper:#ffffff;--soft:#f3f5fa;--blue:#2f6db5;--indigo:#4a55b0;--purple:#7b3f98;--cyan:#6fc3ff;--mut:#55607a;--mutd:#a9b4d0;--line:#dfe4ef;--red:#b3261e;--amber:#d9882e;color-scheme:light}
+*{box-sizing:border-box}
+@media(min-width:1100px){header.band{flex-wrap:nowrap}header.band .nav{flex-wrap:nowrap;white-space:nowrap;gap:clamp(14px,1.6vw,28px)}header.band .hd{flex-wrap:nowrap;white-space:nowrap}}.mock{padding:28px;font-size:18px;border-radius:20px}.mock .top{gap:8px;margin-bottom:22px}.mock .top i{width:11px;height:11px}.mock .big{grid-template-columns:190px minmax(0,1fr);gap:28px}.mock .big svg{width:100%;height:auto}.mock .big b{font-size:20px}.mock .row{padding:16px 18px;margin-top:10px;border-radius:12px}.mock+p,.fig p{font-size:14px!important}@media(max-width:640px){.mock{padding:18px;font-size:15px}.mock .big{grid-template-columns:110px minmax(0,1fr);gap:16px}.mock .row{padding:12px 12px}}.stack{max-width:820px;margin:36px auto 0}.ly{border:3px solid var(--c);background:var(--b);border-radius:18px;padding:22px 28px;text-align:center;display:flex;flex-direction:column;gap:6px;align-items:center}.ly .lt{font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--c)}.ly b{font-size:clamp(20px,3vw,28px);color:var(--c);font-family:Montserrat,sans-serif}.ly .ls{font-size:clamp(15px,2vw,18px);color:var(--c);font-weight:600}.ua{text-align:center;font-size:28px;font-weight:800;line-height:1;color:#8a93a8;padding:10px 0}.chips{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}.chips span{background:#fff;border:2px solid #222;border-radius:10px;padding:12px 26px;font-weight:700;font-size:clamp(15px,2vw,19px);color:#222}@media(min-width:700px){#anatomy{padding-top:clamp(20px,2.94vh,40px);padding-bottom:clamp(20px,2.94vh,40px);min-height:0}#anatomy h2{margin:0 0 10px}#anatomy>p{margin-top:0;margin-bottom:0}#anatomy .stack{margin-top:clamp(12px,2.02vh,26px)}#anatomy .ly{padding:clamp(8px,1.43vh,18px) 24px;gap:2px;border-width:2.5px;border-radius:14px}#anatomy .ly .lt{font-size:clamp(10px,1.18vh,12px)}#anatomy .ly b{font-size:clamp(16px,2.52vh,26px)}#anatomy .ly .ls{font-size:clamp(13px,1.68vh,16px)}#anatomy .ua{font-size:clamp(16px,2.18vh,24px);padding:clamp(1px,0.5vh,6px) 0}#anatomy .chips span{padding:clamp(6px,1.01vh,12px) 22px;font-size:clamp(13px,1.68vh,17px)}}@media(min-width:900px){#anatomy .stack{max-width:780px;padding-left:240px}#anatomy .ly{position:relative}#anatomy .ly .lt{position:absolute;right:100%;top:50%;transform:translateY(-50%);margin-right:26px;width:214px;text-align:right;font-size:clamp(17px,3.2vh,26px);font-weight:800;letter-spacing:0;text-transform:none;line-height:1.15;font-family:Montserrat,sans-serif}#anatomy .ly b{font-size:clamp(17px,3.2vh,27px)}#anatomy .ly .ls{font-size:clamp(13px,2.2vh,17px)}}.post .tg{font:700 12px Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}.post .soon{margin-top:auto;font:600 14px Nunito,sans-serif;color:var(--mut);padding-top:6px}@media(min-width:700px){#anatomy{min-height:calc(100svh - 70px);display:flex;flex-direction:column;justify-content:center;padding-top:clamp(36px,6vh,72px);padding-bottom:clamp(36px,6vh,72px)}#anatomy>h2,#anatomy>p{width:100%}#anatomy .stack{width:100%}}@media(min-width:900px){#anatomy{padding-top:clamp(24px,4vh,48px);padding-bottom:clamp(24px,4vh,48px)}#anatomy .stack{flex:1 1 auto;display:flex;flex-direction:column;justify-content:center;max-height:min(100%,calc(100svh - 300px));position:relative;left:-14px}#anatomy .ly{flex:1 1 0;max-height:190px;justify-content:center}#anatomy .ly:first-child{flex-grow:.75}#anatomy .ua{flex:0 0 auto}#anatomy .ly b{font-size:clamp(20px,3.6vh,32px)}#anatomy .ly .ls{font-size:clamp(14px,2.4vh,20px)}#anatomy .ly .lt{font-size:clamp(18px,3.5vh,30px)}#anatomy .chips span{font-size:clamp(14px,2.2vh,19px)}#anatomy h2{margin-bottom:clamp(8px,1.6vh,18px)}#anatomy .stack{margin-top:clamp(14px,3vh,34px)}}html[lang="es"] header.band .nav{gap:clamp(8px,.9vw,16px)}@media(min-width:1100px){header.band .logo svg{width:32px;height:32px}header.band .logo .lw{font-size:20px}header.band .logo .lw em{margin-left:5px}}@media(min-width:1100px) and (max-width:1199px){html[lang="es"] header.band .nav{gap:6px}html[lang="es"] header.band .nav a{letter-spacing:.04em;font-size:12.5px}header.band .logo .lw{font-size:18px}}a.logo{text-decoration:none;color:inherit}html{scroll-behavior:smooth}html{background:var(--navy);overflow-x:clip;scrollbar-color:#3a4a7a var(--navy)}.hero{min-height:calc(100svh - 70px);display:grid;align-content:center}body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.7 "Nunito Sans",system-ui,sans-serif;padding:0}
+h1,h2,h3,.nav a,.btn,.kick{font-family:Montserrat,system-ui,sans-serif}
+a{color:inherit}
+.band{margin-left:0;margin-right:0;padding-left:max(16px,calc(50vw - 560px));padding-right:max(16px,calc(50vw - 560px))}
+.navy{background:var(--navy);color:#fff}.navy2{background:var(--navy2);color:#fff}.soft{background:var(--soft)}
+@supports not (width:1svw){.band{margin:0}}
+header.band{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:18px}
+.logo{font:800 24px Montserrat,sans-serif;letter-spacing:1px}.logo{display:inline-flex;align-items:center;gap:10px}.logo svg{flex:none}.logo .lw{font:800 22px/1 Montserrat,sans-serif;letter-spacing:.5px}.logo .lw em{font-style:normal;font-weight:600;margin-left:6px;opacity:.85}@media(max-width:400px){.logo .lw{font-size:18px}.logo svg{width:30px;height:30px}}.logo i{font-style:normal;font-size:11px;margin-left:6px;padding:2px 7px;border-radius:6px;background:linear-gradient(90deg,var(--blue),var(--purple))}
+.nav{display:flex;gap:26px;flex-wrap:wrap}.nav a{font-size:13px;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:#dbe3f7;font-weight:600}
+.btn{display:inline-block;background:#fff;color:var(--blue);font-weight:700;letter-spacing:.1em;text-transform:uppercase;font-size:13px;padding:13px 26px;border-radius:999px;text-decoration:none;border:0;cursor:pointer}
+.btn.line{background:transparent;color:#fff;border:1.5px solid #5d6e9c}.btn.dark{background:var(--blue);color:#fff}
+section.band{padding-block:72px}
+h1{font-size:clamp(34px,6vw,62px);line-height:1.08;margin:12px 0 18px;font-weight:800;text-wrap:balance}
+h2{font-size:clamp(28px,4.4vw,46px);line-height:1.12;margin:0 0 28px;font-weight:800;text-wrap:balance}
+h3{font-size:18px;margin:0 0 6px}
+.kick{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--amber);margin:0}
+.soft .kick,.paper .kick{color:var(--blue)}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:48px;align-items:center}
+.two>*{min-width:0}
+.sub{font-size:20px;color:#dbe3f7;margin:0 0 6px}
+.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.hero svg,.fig svg{width:100%;height:auto;display:block}
+.txt p{margin:0 0 16px;color:var(--mut)}.txt p b{color:var(--ink)}
+.navy .txt p,.navy2 .txt p{color:var(--mutd)}.navy .txt p b,.navy2 .txt p b{color:#fff}
+.icons{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:28px 12px;text-align:center}
+.icons div{font:700 12px Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase}
+.icons svg{display:block;margin:0 auto 12px;width:56px;height:56px;color:var(--ink)}
+.ctr{text-align:center}
+.mock{background:#0a1226;border:1px solid #243158;border-radius:14px;padding:14px;color:#fff;font-size:13px}
+.mock .top{display:flex;gap:6px;margin-bottom:12px}.mock .top i{width:8px;height:8px;border-radius:50%;background:#2a3965}
+.mock .big{display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px;align-items:center}
+.mock .row{display:flex;justify-content:space-between;gap:8px;padding:9px 10px;border-radius:8px;background:#121c38;margin-top:6px}
+.mock .row span:last-child{color:#7fe3b0;font-weight:700}
+.tiers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px}
+.tier{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}.tier p{margin:0;color:var(--mut)}
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin-top:34px;border-top:2px solid var(--line)}
+.tl div{position:relative;padding:16px 10px 0 0}.tl div::before{content:"";position:absolute;top:-8px;left:0;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--purple))}
+.tl b{display:block;font:700 12px Montserrat,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}.tl span{color:var(--mut)}
+.note{font-size:13px;color:var(--mut);margin:14px 0 0}
+details{border-bottom:1px solid var(--line);padding:16px 0}summary{cursor:pointer;font:700 17px Montserrat,sans-serif}details p{margin:10px 0 0;color:var(--mut)}
+.chk{list-style:none;padding:0;margin:0 0 8px}.chk li{padding:6px 0 6px 32px;position:relative;color:#dbe3f7}.chk li::before{content:"";position:absolute;left:4px;top:14px;width:13px;height:7px;border-left:3px solid var(--amber);border-bottom:3px solid var(--amber);transform:rotate(-45deg)}
+form{display:grid;gap:12px;max-width:520px}
+input,textarea{padding:13px;border-radius:10px;border:1px solid #3a4a78;background:#0a1226;color:#fff;font:inherit;width:100%}
+.btn:focus-visible,input:focus-visible,textarea:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+footer.band{padding-block:28px;font-size:14px;color:var(--mutd)}
+.pulse{animation:pl 3s ease-in-out infinite}@keyframes pl{50%{opacity:.55}}
+@media (prefers-reduced-motion:reduce){.pulse{animation:none}}
+.btn.amber{background:var(--amber);color:#0c1630;border-radius:4px;text-transform:none;letter-spacing:0;font-size:16px}
+.navy .tier,.navy2 .tier{background:linear-gradient(160deg,#14224a,#0f1b3a);border-color:#2a3a6a;border-radius:18px}
+.navy .tier h3{color:var(--amber);font-size:20px}.navy .tier p{color:#c3cde6}
+.navy .tl{border-top-color:transparent;position:relative}.navy .tl::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:#2a3a6a}
+.navy .tl div::before{background:var(--amber);top:-6px;width:12px;height:12px}.navy .tl b{color:var(--amber)}.navy .tl span{color:#c3cde6}
+.navy .note{color:var(--mutd)}
+.white3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:20px}
+.wc{background:#fff;border:1px solid var(--line);border-radius:18px;padding:24px}.wc h3{color:var(--blue);font-size:20px}.wc p{margin:0;color:var(--ink)}
+.closing{max-width:640px;margin:36px auto 0;text-align:center;font-weight:700;color:#3c465e}
+#faq h2{text-align:center;color:var(--navy)}
+#faq details{max-width:840px;margin:0 auto;border-bottom:1px solid #cfd5e3;padding:22px 0}#faq details:first-of-type{border-top:1px solid #cfd5e3}
+#faq summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:19px;color:var(--navy)}
+#faq summary::-webkit-details-marker{display:none}
+#faq summary::after{content:"+";font:400 30px/1 Nunito Sans,sans-serif;color:var(--blue);flex:none;transition:transform .2s}
+#faq details[open] summary::after{transform:rotate(45deg)}
+form.card{background:#fff;color:var(--ink);border-radius:22px;padding:30px;max-width:none;gap:14px;box-shadow:0 20px 50px #0006}
+form.card .hint{font-size:13px;color:#8a92a6;margin-top:-2px}label{display:grid;gap:6px;font-size:15px;color:#6b7387;min-width:0}
+form.card input,form.card select,form.card textarea{background:#f4f5f7;color:var(--ink);border:1px solid #cfd5e3;border-radius:8px;padding:12px;font:inherit;width:100%;min-width:0}
+.fr{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:14px}
+form.card input:focus-visible,form.card select:focus-visible,form.card textarea:focus-visible{outline:2px solid var(--blue)}
+.feed{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:34px;margin-top:40px}
+.post{background:#fff;border:1px solid #e6e9f2;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s;min-width:0}
+.post:hover{transform:translateY(-3px);box-shadow:0 10px 28px #0b102022}
+.post svg{display:block;width:100%;aspect-ratio:16/10;height:auto}
+.post .b{padding:24px 26px 28px;display:flex;flex-direction:column;gap:10px;flex:1}
+.post h3{font:700 19px/1.3 Montserrat,sans-serif;margin:0}.post p{margin:0;color:var(--mut);font-size:16px}
+.post a{margin-top:auto;font:700 14px Montserrat,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);text-decoration:none;padding-top:6px}
+.post a:hover{text-decoration:underline}
+footer.ft{padding-block:34px 40px;color:var(--mutd);font-size:15px}
+.ft1{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding-bottom:26px;border-bottom:1px solid #2a3a6a}
+.ft1 .logo{color:#fff}.ft1 address{font-style:normal;text-align:right;line-height:1.7}
+.ft2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:22px;align-items:center;padding-top:26px}
+.ft2>*{min-width:0}.ft2 nav{display:flex;gap:18px;flex-wrap:wrap}.ft2 nav a{color:var(--mutd);text-decoration:none}.ft2 nav a:hover,.ai a:hover{color:#fff}
+.ai{text-align:center;display:grid;gap:10px}.ai div{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.ai a{color:#dbe3f7;border:1px solid #3a4a78;border-radius:999px;padding:6px 14px;text-decoration:none;font-size:14px}
+.cp{text-align:right}
+@media(min-width:960px){.ft2{grid-template-columns:auto minmax(0,1fr) auto}.ai div{flex-wrap:nowrap}.ft2 nav{flex-wrap:nowrap;white-space:nowrap}.cp{white-space:nowrap}}
+@media(max-width:700px){.ft1 address,.cp{text-align:left}.ai{text-align:left}.ai div{justify-content:flex-start}}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.steps li{display:flex;gap:16px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.steps .num{flex:none;width:38px;height:38px;border-radius:50%;color:#fff;font:700 16px Montserrat,sans-serif;display:grid;place-items:center}
+.steps li:last-child .num{color:#0c1630}
+.steps b{display:block;font:700 18px Montserrat,sans-serif}.steps div span{color:var(--mut);font-size:15px}
+.lang{display:flex;border:1px solid #3a4a78;border-radius:999px;overflow:hidden}
+.lang button{background:transparent;color:#dbe3f7;border:0;padding:7px 13px;font:700 12px Montserrat,sans-serif;letter-spacing:.1em;cursor:pointer}
+.lang button[aria-pressed="true"]{background:#fff;color:var(--blue)}
+.lang button:focus-visible{outline:2px solid var(--cyan);outline-offset:-2px}
+.hd{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+#engage .note{margin-top:22px}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--navy)}
+header.band{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;padding-block:14px;border-bottom:1px solid #1d2a52}
+.menu{display:none;align-items:center;justify-content:center;width:42px;height:42px;border-radius:10px;border:1px solid #3a4a78;background:transparent;color:#fff;cursor:pointer}
+.menu svg{width:20px;height:20px}
+@media(max-width:959px){header.band{flex-wrap:wrap}header .nav{display:none;order:3;width:100%;flex-direction:column;gap:0;padding-top:6px}header.open .nav{display:flex}header .nav a{padding:13px 0;border-top:1px solid #1d2a52;font-size:14px}.menu{display:inline-flex}.hd{gap:10px}.hd .btn{padding:11px 16px;font-size:12px}}
+@media(max-width:400px){.hd .lang button{padding:7px 9px}.logo{font-size:21px}}
+.hero{min-height:0}
+.hero .mock{box-shadow:0 30px 80px #0008}
+.hero .mock .row{transition:background .3s}
+@media(max-width:520px){.cta .btn{flex:1 1 100%;text-align:center}}
+.proof{padding-block:22px!important;border-top:1px solid #1d2a52;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px 28px}
+.proof span{font:700 12px Montserrat,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--mutd)}
+.proof ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px 34px}
+.proof li{font:800 19px Montserrat,sans-serif;color:#dbe3f7;letter-spacing:.01em}
+#fit .icons{grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:18px;text-align:left}
+#fit .icons>div{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px 22px;display:grid;grid-template-columns:44px minmax(0,1fr);gap:4px 14px;align-items:start}
+#fit .icons svg{grid-row:span 2;width:40px;height:40px;margin:0;color:var(--blue)}
+#fit .icons small{font:400 15px/1.45 "Nunito Sans",sans-serif;letter-spacing:0;text-transform:none;color:var(--mut)}
+#fit h2{text-align:left}
+.track{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px}
+.track li{background:#fff;border:1px solid var(--line);border-top:4px solid var(--c);border-radius:12px;padding:18px 18px 20px;display:flex;flex-direction:column;gap:6px}
+.track .n{font:800 13px Montserrat,sans-serif;letter-spacing:.14em;color:var(--c)}
+.track b{font:800 20px Montserrat,sans-serif;color:var(--ink)}
+.track p{margin:0;color:var(--mut);font-size:15px;line-height:1.5}
+.track .au{margin-top:auto;align-self:flex-start;font:700 11px Montserrat,sans-serif;letter-spacing:.1em;text-transform:uppercase;border-radius:999px;padding:5px 10px;background:var(--soft);color:var(--ink);border:1px solid var(--line)}
+.track .au.on{background:#0c1630;color:#fff;border-color:#0c1630}
+@media(max-width:960px){.track{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}}
+.base{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:12px 28px;margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}
+.base div{font-size:15px;color:var(--mut);line-height:1.5}.base b{display:block;color:var(--ink);font:700 15px Montserrat,sans-serif;margin-bottom:2px}
+.more{display:block;margin:28px auto 0}
+.tier{position:relative}.tier .tag{position:absolute;top:-11px;left:20px}
+.lang-m{display:none;align-self:flex-start;margin:12px 0 4px}
+@media(max-width:480px){.hd>.lang{display:none}.lang-m{display:flex}}
 
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+.trust{margin:22px 0 0;font-size:15px;color:var(--mutd)}.trust b{color:#fff}
+#engage .tiers{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr))}
+.tier{display:flex;flex-direction:column;gap:8px}.tier .pr{font:800 24px/1.1 Montserrat,sans-serif;color:#fff;margin:2px 0 4px}.tier .pr small{display:block;font:600 13px Nunito Sans,sans-serif;color:var(--mutd);margin-top:4px}
+.navy2 .tier{background:linear-gradient(160deg,#14224a,#0f1b3a);border-color:#2a3a6a;border-radius:18px}.navy2 .tier h3{color:#fff;font-size:20px}.navy2 .tier p{color:#c3cde6}
+.navy .tier .pr,.navy2 .tier .pr{color:#fff}
+.tier.hl{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber) inset}
+.tier .tag{align-self:flex-start;font:700 11px Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:#0c1630;background:var(--amber);border-radius:4px;padding:3px 8px}
+#built .wc h3{font-size:18px}
+#work .tier a{margin-top:auto;font:700 13px Montserrat,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);text-decoration:none;padding-top:6px}#work .tier a:hover{text-decoration:underline}
+#work .tier .tg{font:700 11px Montserrat,sans-serif;letter-spacing:.12em;text-transform:uppercase;color:var(--mutd)}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:22px;margin-top:40px}
+.quotes figure{margin:0;padding:4px 0 0 20px;border-left:3px solid var(--amber)}
+.quotes blockquote{margin:0 0 10px;font-size:18px;line-height:1.5;color:#fff}
+.quotes figcaption{font-size:14px;color:var(--mutd)}.quotes figcaption b{color:#dbe3f7;display:block}
+.talk{margin-top:22px;color:#dbe3f7;font-size:16px}.talk a{color:#fff;font-weight:700}.talk span{user-select:all;white-space:nowrap}
+</style>
 
-    <!-- Bootstrap CSS -->
-    <!-- <link rel="stylesheet href=" ./assets/css/style.css"> -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <title>w3 Basics - Spanish for Professionals</title>
-</head>
+<div id="top"></div><header class="band navy"><a class="logo" href="#top" aria-label="W3 Basics home"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><defs><linearGradient id="w3g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6bff"/><stop offset="1" stop-color="#8b4dff"/></linearGradient></defs><rect width="40" height="40" rx="10" fill="url(#w3g)"/><g fill="none" stroke="#fff" stroke-width="1.6" opacity=".9"><circle cx="20" cy="20" r="12"/><ellipse cx="20" cy="20" rx="5.2" ry="12"/><path d="M8 20h24M10 14h20M10 26h20"/></g><circle cx="20" cy="20" r="3.2" fill="#fff"/></svg><span class="lw">W3<em>Basics</em></span></a>
+<nav class="nav" id="nav"><a href="#how">How it works</a><a href="#fit">Use cases</a><a href="#process">Method</a><a href="#engage">Pricing</a><a href="#work">Our work</a><a href="#faq">FAQ</a><div class="lang lang-m" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="es" aria-pressed="false">ES</button></div></nav>
+<div class="hd"><div class="lang" role="group" aria-label="Language"><button type="button" data-l="en" aria-pressed="true">EN</button><button type="button" data-l="es" aria-pressed="false">ES</button></div><a class="btn" href="#contact">Book a call</a><button class="menu" type="button" id="menu" aria-expanded="false" aria-controls="nav" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button></div></header>
 
-<body style="background-color: darkgreen;">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">w3 Basics</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="course-overview.html">Program Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="testimonials.html">Testimonials</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
-                <!-- <li class="nav-item">
-                    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                </li> -->
-            </ul>
-        </div>
-    </nav>
-    <nav aria-label="breadcrumb">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#">w3 Basics</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Home</li>
-        </ol>
-    </nav>
+<section class="band navy hero" style="padding-block:72px 64px"><div class="two">
+<div><p class="kick">W3 Basics · Updated concept</p>
+<h1>From AI ideas to AI that does the work.</h1>
+<p class="sub">AI shows you what to fix.</p><p class="sub" style="color:#fff;font-weight:700">W3 Basics makes it happen.</p>
+<div class="cta"><a class="btn" href="#contact">Book a free AI Fit Call</a><a class="btn line" href="#engage">See pricing</a></div></div>
+<div class="fig"><div class="mock" role="img" aria-label="Example automation dashboard"><div class="top"><i></i><i></i><i></i></div>
+<div class="big"><svg viewBox="0 0 100 100" width="110" height="110"><circle cx="50" cy="50" r="38" fill="none" stroke="#243158" stroke-width="16"/><circle cx="50" cy="50" r="38" fill="none" stroke="#6fc3ff" stroke-width="16" stroke-dasharray="110 239" transform="rotate(-90 50 50)"/><circle cx="50" cy="50" r="38" fill="none" stroke="#b46bd6" stroke-width="16" stroke-dasharray="70 239" stroke-dashoffset="-110" transform="rotate(-90 50 50)"/><text x="50" y="55" text-anchor="middle" fill="#fff" font-size="14" font-weight="700">Today</text></svg>
+<div><b>Automation inbox</b><div class="row"><span>Invoices checked</span><span>Done</span></div><div class="row"><span>Support tickets routed</span><span>Done</span></div><div class="row"><span>CRM updated after call</span><span>Done</span></div><div class="row"><span>Contract summary</span><span style="color:#ffd27f">Needs approval</span></div></div></div>
+<p style="margin:12px 0 0;color:#8fa0cc;font-size:12px">Illustrative example</p></div></div>
+</div></section>
+<section class="band navy proof" aria-label="Clients"><span>Trusted in production by</span><ul><li>Archie</li><li>Ocho</li><li>GMT Engineering</li><li>Vest Social</li><li>Carry</li></ul></section>
+
+<section class="band" id="how"><div class="two">
+<div class="fig" role="img" aria-label="Diagram: work flows from sources through your teams to customers"><svg viewBox="0 0 520 300"><defs><linearGradient id="cg" x1="0" x2="1"><stop offset="0" stop-color="#2f6db5"/><stop offset="1" stop-color="#7b3f98"/></linearGradient></defs>
+<g stroke="#9aa6c4" stroke-width="2" fill="none"><path d="M114 150 H396 M222 100 L282 130 M222 200 L282 170"/></g>
+<g fill="url(#cg)"><circle cx="70" cy="150" r="44"/><circle cx="190" cy="80" r="44"/><circle cx="190" cy="220" r="44"/><circle cx="310" cy="150" r="44"/><circle cx="440" cy="150" r="44"/></g>
+<g font-family="Nunito Sans,sans-serif" font-size="12" fill="#fff" text-anchor="middle"><text x="70" y="154">Inbox</text><text x="190" y="84">Documents</text><text x="190" y="224">Apps</text><text x="310" y="147">Claude</text><text x="310" y="162">agents</text><text x="440" y="147">Done,</text><text x="440" y="162">on time</text></g></svg></div>
+<div class="txt"><p class="kick" style="color:var(--blue)">How it works</p><h2>Your team approves. The agent does the work.</h2>
+<p>Most teams lose hours to copying, checking and chasing. Your email, documents and apps feed one workflow, and the agent spots the work, drafts the action and sends it to the right person.</p>
+<p>Once approved, it carries the work across your connected systems. Every action is logged, so you can see what it did, when and why.</p>
+<p><b>You stay in command. We handle the coordination.</b></p></div></div></section>
+
+<section class="band soft" id="fit"><p class="kick">Use cases</p><h2>Start with the work your team repeats every day.</h2>
+<div class="icons">
+<div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="6"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M37 11l-4 4M15 33l-4 4"/></svg><span>Operations</span><small>Orders checked against stock and routed</small></div>
+<div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 10h36v22H20l-8 8v-8H6z"/><path d="M14 18h20M14 25h12"/></svg><span>Support</span><small>Tickets triaged and replies drafted</small></div>
+<div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M29 17c-1-2-3-3-5-3-3 0-5 2-5 4s2 3 5 4 5 2 5 4-2 4-5 4c-2 0-4-1-5-3M24 10v28"/></svg><span>Finance</span><small>Invoices matched to purchase orders</small></div>
+<div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 40V8M6 40h36"/><path d="M12 32l9-10 7 6 12-16"/></svg><span>Sales</span><small>CRM updated after every call</small></div>
+<div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="16" r="7"/><circle cx="34" cy="20" r="5"/><path d="M4 40c0-8 6-12 14-12s14 4 14 12M32 30c6 0 12 3 12 10"/></svg><span>People</span><small>Candidates screened, onboarding packs sent</small></div>
+<div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h24v20H4zM28 20h10l6 7v5H28z"/><circle cx="13" cy="35" r="4"/><circle cx="36" cy="35" r="4"/></svg><span>Logistics</span><small>Shipment updates sent to customers</small></div>
+<div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M24 4l16 6v12c0 10-7 17-16 20C15 39 8 32 8 22V10z"/><path d="M17 24l5 5 9-10"/></svg><span>Security</span><small>Alerts triaged with context attached</small></div>
+<div><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 36a8 8 0 010-16 10 10 0 0119-2 8 8 0 011 18z"/></svg><span>Cloud</span><small>Cost reports and cleanup tickets</small></div>
+</div></section>
+
+<section class="band" id="anatomy" style="text-align:center"><h2>The anatomy of an AI automation</h2>
+<p style="max-width:700px;margin-left:auto;margin-right:auto;color:var(--mut)">It sits on top of the systems and processes you already use. It connects your data, applies the rules of your business and takes action.</p>
+<div class="stack"><div class="ly" style="--c:#222;--b:#f4f5f8"><span class="lt">Your systems</span><div class="chips"><span>Email</span><span>Documents</span><span>Apps</span></div></div><div class="ua" aria-hidden="true">↓</div><div class="ly" style="--c:#b3261e;--b:#fcefee"><span class="lt">Intelligence</span><b>Claude agents</b><span class="ls">Read, decide, act</span></div><div class="ua" aria-hidden="true">↓</div><div class="ly" style="--c:#7b3f98;--b:#f5eefa"><span class="lt">Workflows</span><b>Your processes and rules</b><span class="ls">Configured for your business</span></div><div class="ua" aria-hidden="true">↓</div><div class="ly" style="--c:#2f6db5;--b:#eef4fc"><span class="lt">Interaction</span><b>Chat, approvals, notifications</b><span class="ls">Where your people stay in control</span></div></div></section>
+
+<section class="band soft" id="process"><p class="kick" style="color:var(--blue)">Method</p><h2>Agents earn trust step by step.</h2><p style="max-width:680px;color:var(--mut);margin:-12px 0 28px">Each phase starts only when the last one beats its baseline. Agents begin in shadow mode and work on their own only after they pass the checks we agree with you.</p>
+<ol class="track"><li style="--c:#2f6db5"><span class="n">01</span><b>Audit</b><p>1 week. Map the workflow, set the baseline, fixed quote.</p><span class="au">No agent yet</span></li><li style="--c:#4a55b0"><span class="n">02</span><b>Prove</b><p>2 to 3 weeks. The agent drafts, your team approves every action.</p><span class="au">Shadow mode</span></li><li style="--c:#6a49a8"><span class="n">03</span><b>Ship</b><p>Hardened, secured and monitored in your cloud.</p><span class="au">Supervised</span></li><li style="--c:#8a3f94"><span class="n">04</span><b>Hand over</b><p>Code, prompts, runbooks and training are yours.</p><span class="au">Supervised</span></li><li style="--c:#d9882e"><span class="n">05</span><b>Improve</b><p>Monthly report against the baseline, new automations from your queue.</p><span class="au on">Autonomous</span></li></ol>
+<div class="base"><div><b>Agree the goal</b>Hours saved, errors avoided or cycle time cut. We pick one and write it down.</div><div><b>Set the baseline</b>We measure how the work runs today, in your own data.</div><div><b>Measure the result</b>After launch we report against the baseline, so you can see the change.</div></div>
+<div class="cta"><a class="btn amber" href="#contact">Book a free AI Fit Call →</a></div></section>
+
+<section class="band navy" id="engage"><p class="kick">Pricing</p><h2>Start small. Prove it. Then scale.</h2><div class="tiers">
+<div class="tier"><h3>AI Fit Call</h3><p class="pr">Free</p><p>30 minutes. We pick one workflow and tell you plainly whether it is worth automating.</p></div>
+<div class="tier hl"><span class="tag">Start here</span><h3>AI Audit</h3><p class="pr">$1,500</p><p>One week. We map the workflow in your own data, set the baseline and give you a fixed quote. Credited in full to your Pilot.</p></div>
+<div class="tier"><h3>Pilot Sprint</h3><p class="pr">from $6,000</p><p>Two to three weeks. One workflow running, with your team approving every action, measured against the baseline.</p></div>
+<div class="tier"><h3>Production</h3><p class="pr">from $15,000<small>per workflow</small></p><p>Hardened, monitored and security-reviewed in your cloud, then handed over with training.</p></div>
+<div class="tier"><h3>Operate</h3><p class="pr">from $1,500<small>/ month</small></p><p>Monitoring, a monthly report against the baseline and new automations from your queue. Cancel anytime.</p></div></div>
+<p class="note">Prices in USD. Claude licences and cloud usage are billed at cost, with no markup.</p><div class="cta"><a class="btn amber" href="#contact">Book a free AI Fit Call →</a></div></section>
+
+<section class="band" id="built"><p class="kick" style="color:var(--blue)">Why W3 Basics</p><h2>Built like infrastructure, not a demo.</h2><p style="max-width:640px;color:var(--mut);margin:-12px 0 0">Most automation agencies stop at a no-code flow. We ship agents the way we ship production systems.</p><div class="white3" style="margin-top:28px">
+<div class="wc"><h3>Runs in your cloud</h3><p>Deployed to your AWS, Google Cloud or Azure account with Terraform and CI/CD, backed by more than 10 years of DevOps practice.</p></div>
+<div class="wc"><h3>Secure by default</h3><p>Least-privilege access, secrets kept out of prompts and a log of every action the agent takes.</p></div>
+<div class="wc"><h3>Tested before it acts</h3><p>Every change to a prompt or an agent passes automated checks before it reaches your team.</p></div>
+<div class="wc"><h3>Yours to keep</h3><p>Code, prompts, infrastructure and runbooks are handed over with training. No lock-in.</p></div></div></section>
 
 
-    <div class="container">
-
-
-        <div class="shadow card">
-            <div class="card-header">
-                <h1>Spanish for Professionals&#0174;</h1>
-            </div>
-            <div class="card-body">
-                <div class="shadow p-3 mb-5 bg-white rounded">
 
 
 
-                    <h2>Private In-Home and Online Spanish Lessons in New York City metro area
-                        (NYC,
-                        CT,
-                        NJ).
-                    </h2>
-                    <p class="lead">You will receive personally tailored Spanish lessons from exceptional
-                        tutors in a one-on-one setting. We help you connect with
-                        in-home and online tutoring that offers flexible scheduling and your choice of locations.
-                    </p>
-                    <!-- </div> -->
 
-                    <!-- DivTable.com -->
 
-                    <div class="row" style="padding: 10px;">
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <span class="border border-secondary rounded">
-                                    <div class="card-body">
-                                        <h3>3 Keys of Success</h3>
-                                        <li>Your learning preferences</li>
-                                        <li>Defined proficiency level</li>
-                                        <li>Clear objectives</li>
-                                    </div>
-                                </span>
-                            </div>
 
-                        </div>
 
-                        <div class="col-sm-6">
-                            <div class="card">
-                                <span class="border border-secondary rounded">
-                                    <div class="card-body">
-                                        <h3>Custom Field Trips</h3>
-                                        <li>Based on student's interests</li>
-                                        <li>Unique cultural experiences</li>
-                                        <li>Key NYC metro destinations</li>
-                                    </div>
-                                </span>
-                            </div>
-                        </div>
 
-                        <div class="card" id="container" style="width: 100%; align-items: center; border: 0px;">
-                            <div class="card-body">
-                                <a class="btn btn-primary btn-lg" href="course-overview.html" role="button"
-                                    style="align-items: center;">Spanish for Professionals&#0174; Program
-                                    Features</a>
-                                <!-- <a class="btn btn-secondary btn-lg" href="contact.html" role="button"
-                                    style="align-items: center;">Contact Us</a> -->
-                            </div>
-                            <!-- <div>
-                                <img src="./assets/images/bbb.png" alt="Better Business Bureau" height="69" width="69">
-                            </div> -->
 
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-        </div>
-    </div>
-    </div>
-    <p>
-        <br>
-    </p>
-    <div style="width: 100%;"></div>
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container" style="padding: 10px;">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <p style="text-align: center;">
-                    <a class="navbar-brand" href="index.html">w3 Basics</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home<span class="sr-only" (current)></span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="course-overview.html">Program Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="testimonials.html">Testimonials</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="contact.html">Contact</a>
-                            </li>
-                        </ul>
-                    </div>
-                </p>
-            </nav>
-            <footer class="footer mt-auto py-3">
-                <div class="container" style="text-align: center;">
-                    <span class="text-muted">&copy; 2020 Web Basics LLC. All rights reserved.</span>
 
-                </div>
-            </footer>
-        </div>
-    </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
 
-</html>
+
+
+
+
+
+<section class="band navy2" id="work"><p class="kick">Our work</p><h2>Teams that already trust us with production.</h2><div class="tiers">
+<div class="tier"><span class="tg">DevOps · CI/CD</span><h3>Vest Social</h3><p>A DevOps setup with branching, versioning and CI/CD pipelines across the software lifecycle.</p></div>
+<div class="tier"><span class="tg">AWS · Agile delivery</span><h3>Archie</h3><p>A custom AWS platform with defined DevOps processes for fast, reliable releases.</p></div>
+<div class="tier"><span class="tg">AWS · Terraform</span><h3>Carry</h3><p>A secure, cost-effective AWS architecture in Terraform, with a custom CI/CD process run from Slack.</p></div></div>
+<div class="quotes">
+<figure><blockquote>Working with W3 Basics has been nothing but a delight.</blockquote><figcaption><b>Alejandro Roman</b>Founding Engineer, Archie</figcaption></figure>
+<figure><blockquote>They've helped us move faster and have been great to work with at every step of the way.</blockquote><figcaption><b>Nick Rash</b>Co-Founder, Ocho</figcaption></figure>
+<figure><blockquote>W3 Basics has consistently maintained our company's good standing with our clients, never taking shortcuts.</blockquote><figcaption><b>Daniel Taboada</b>Co-founder, GMT Engineering</figcaption></figure></div></section>
+
+<section class="band" id="faq"><h2>Frequently asked questions</h2>
+<details><summary>Where do we start?</summary><p>Book the free AI Fit Call. If there is a workflow worth automating, the AI Audit maps it and gives you a fixed quote.</p></details>
+<details><summary>What does it cost?</summary><p>The AI Audit is $1,500 and is credited to your Pilot. Pilots start at $6,000 and production at $15,000 per workflow. Claude and cloud usage are billed at cost.</p></details>
+<details><summary>Will the AI act without our approval?</summary><p>Not until you decide it should. Every agent starts in shadow mode, then supervised, and works on its own only after it passes the checks we agree with you.</p></details>
+<details><summary>Who owns what you build?</summary><p>You do. Code, prompts, infrastructure and runbooks are handed over at the end of every project.</p></details>
+<details><summary>Do we need engineers on our side?</summary><p>No. We build and run it, and train your team to extend it.</p></details>
+<details><summary>Will it replace our systems?</summary><p>No. It works on top of the tools you already use.</p></details>
+<details><summary>Which AI do you use?</summary><p>Claude, by Anthropic, through your Claude workspace or Amazon Bedrock in your own AWS account.</p></details>
+<details><summary>Do you work in Spanish?</summary><p>Yes. We work in English and Spanish with teams across the US and Latin America.</p></details></section>
+
+<section class="band soft" id="feed"><h2 class="ctr" style="margin-bottom:0">The W3 Basics Feed</h2>
+<div class="feed">
+<article class="post"><svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#0c1630"/><g stroke="#6fc3ff" stroke-opacity=".6" fill="none" stroke-width="1.5"><path d="M160 100 L60 50 M160 100 L260 50 M160 100 L60 150 M160 100 L260 150"/></g><g fill="#0c1630" stroke="#6fc3ff" stroke-width="2"><rect x="44" y="36" width="32" height="28" rx="5"/><rect x="244" y="36" width="32" height="28" rx="5"/><rect x="44" y="136" width="32" height="28" rx="5"/><rect x="244" y="136" width="32" height="28" rx="5"/></g><rect x="136" y="76" width="48" height="48" rx="10" fill="#d9882e"/><path d="M148 100 l8 8 l16 -18" stroke="#fff" stroke-width="5" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="b"><span class="tg">Anthropic · May 2026</span><h3>Anthropic launches Claude for Small Business</h3><p>Built on Claude Cowork, it adds prebuilt workflows and connectors to tools like QuickBooks and HubSpot. People approve each plan before anything is sent or paid. Source: Axios.</p><a href="https://www.axios.com/2026/05/13/anthropic-claude-small-business-smb" target="_blank" rel="noopener">Read more…</a></div></article>
+<article class="post"><svg viewBox="0 0 320 200" aria-hidden="true"><rect width="320" height="200" fill="#050a1a"/><g stroke="#6fc3ff" stroke-opacity=".35"><path d="M30 170 H290 M30 130 H290 M30 90 H290 M30 50 H290"/></g><rect x="90" y="54" width="56" height="116" rx="5" fill="#6fc3ff"/><rect x="174" y="62" width="56" height="108" rx="5" fill="#7b3f98"/><g font-family="Montserrat,sans-serif" font-weight="800" font-size="18" fill="#fff" text-anchor="middle"><text x="118" y="46">52%</text><text x="202" y="54">45%</text></g></svg><div class="b"><span class="tg">Anthropic Economic Index · Jan 2026</span><h3>Augmentation edges out automation in how people use Claude</h3><p>Anthropic’s report found 52% of Claude.ai conversations were augmentation and 45% automation, and success rates fall as tasks get longer.</p><a href="https://www.anthropic.com/news/anthropic-economic-index-january-2026-report" target="_blank" rel="noopener">Read more…</a></div></article>
+<article class="post"><svg viewBox="0 0 320 200" aria-hidden="true"><defs><linearGradient id="f5" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#2f6db5"/><stop offset="1" stop-color="#7b3f98"/></linearGradient></defs><rect width="320" height="200" fill="#e9ecf3"/><path d="M70 70 h60 l14 16 h106 a8 8 0 0 1 8 8 v66 a8 8 0 0 1 -8 8 h-180 a8 8 0 0 1 -8 -8 v-82 a8 8 0 0 1 8 -8z" fill="url(#f5)"/><g fill="#fff" fill-opacity=".9"><rect x="96" y="112" width="110" height="9" rx="4"/><rect x="96" y="132" width="80" height="9" rx="4"/></g><circle cx="238" cy="62" r="16" fill="#d9882e"/><path d="M238 52 v20 M228 62 h20" stroke="#fff" stroke-width="4" stroke-linecap="round"/></svg><div class="b"><span class="tg">Anthropic · Jan 2026</span><h3>Claude Cowork brings agent work to everyday tasks</h3><p>A preview that lets Claude read, edit and organize files in a folder you choose, and asks before destructive actions. Source: PYMNTS.</p><a href="https://pymnts.com/news/artificial-intelligence/2026/anthropic-introduces-cowork-turn-claude-into-collaborator" target="_blank" rel="noopener">Read more…</a></div></article>
+</div><p class="note ctr" style="margin-top:28px">News stories link to their original sources.</p></section>
+
+<section class="band navy" id="contact" style="background:linear-gradient(180deg,#1a2d5e 0,var(--navy) 55%)"><div class="two" style="align-items:start">
+<div style="padding-top:24px"><h2 style="font-size:clamp(34px,5vw,56px)">What should your team stop doing by hand?</h2>
+<p style="color:#dbe3f7;font-size:19px;margin:0 0 22px">Every team has work that eats time and adds nothing. A free 30-minute AI Fit Call shows which workflow to automate first. No new infrastructure needed.</p>
+<ul class="chk"><li>The workflow worth automating first</li><li>A straight answer on fit, with reasons</li><li>What the AI Audit would measure and cost</li></ul>
+</div>
+<form id="f" class="card"><p class="kick" style="color:var(--blue);text-align:center;letter-spacing:.2em;margin-bottom:6px">Request your AI Fit Call</p>
+<label><span>What would you like to solve?</span><textarea id="m" name="message" rows="4"></textarea></label>
+<div class="fr"><label><span>Company*</span><input id="co" name="company" autocomplete="organization" required></label><label><span>Focus area*</span><select id="fa" name="focus" required><option value=""></option><option>Operations</option><option>Support</option><option>Finance</option><option>Sales</option><option>People</option><option>Logistics</option><option>Security</option><option>Cloud</option></select></label></div>
+<div class="fr"><label><span>First name*</span><input id="fn" name="first_name" autocomplete="given-name" required></label><label><span>Last name*</span><input id="ln" name="last_name" autocomplete="family-name" required></label></div>
+<label><span>Work email*</span><input id="e" name="email" type="email" autocomplete="email" required></label>
+<input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+<button class="btn dark" id="s" type="submit" style="justify-self:center;border-radius:4px;text-transform:none;letter-spacing:.04em;font-size:17px;padding:14px 36px">Book my AI Fit Call</button><small id="ok" hidden style="color:var(--mut);text-align:center" role="status">Thanks! Your message was sent. We will write back personally.</small><small id="er" hidden style="color:var(--red);text-align:center" role="alert">We could not send that. Please try again in a moment.</small></form></div></section>
+
+<footer class="band navy2 ft"><div class="ft1"><a class="logo" href="#top" aria-label="W3 Basics home"><svg viewBox="0 0 40 40" width="36" height="36" aria-hidden="true"><defs><linearGradient id="w3g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2f6bff"/><stop offset="1" stop-color="#8b4dff"/></linearGradient></defs><rect width="40" height="40" rx="10" fill="url(#w3g)"/><g fill="none" stroke="#fff" stroke-width="1.6" opacity=".9"><circle cx="20" cy="20" r="12"/><ellipse cx="20" cy="20" rx="5.2" ry="12"/><path d="M8 20h24M10 14h20M10 26h20"/></g><circle cx="20" cy="20" r="3.2" fill="#fff"/></svg><span class="lw">W3<em>Basics</em></span></a></div>
+<div class="ft2"><nav aria-label="Footer"><a href="#contact">Contact</a></nav>
+<div class="ai"><span>Request an AI summary of W3 Basics</span><div><a href="https://claude.ai" rel="noopener">Claude</a><a href="https://chatgpt.com" rel="noopener">ChatGPT</a><a href="https://gemini.google.com" rel="noopener">Gemini</a><a href="https://www.perplexity.ai" rel="noopener">Perplexity</a></div></div>
+<span class="cp">© 2026 W3 Basics</span></div></footer>
+<script>(function(){var f=document.getElementById('f');f.addEventListener('submit',function(e){e.preventDefault();var b=document.getElementById('s'),ok=document.getElementById('ok'),er=document.getElementById('er');ok.hidden=er.hidden=true;b.disabled=true;var d={};new FormData(f).forEach(function(v,k){d[k]=v});fetch('/api/contact',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(d)}).then(function(r){return r.json()}).then(function(j){if(!j.success)throw 0;f.reset();ok.hidden=false}).catch(function(){er.hidden=false}).then(function(){b.disabled=false})})})()</script>
+<script>(function(){var hd=document.querySelector('header.band'),m=document.getElementById('menu');m.addEventListener('click',function(){var o=hd.classList.toggle('open');m.setAttribute('aria-expanded',o?'true':'false')});document.getElementById('nav').addEventListener('click',function(e){if(e.target.closest('a')){hd.classList.remove('open');m.setAttribute('aria-expanded','false')}});var b=document.getElementById('more');b&&b.addEventListener('click',function(){document.querySelectorAll('[data-more]').forEach(function(a){a.hidden=false});b.hidden=true})})()</script>
+<script>
+(function(){
+var D={"Use cases": "Casos de uso", "Trusted in production by": "Confían en nosotros en producción", "Most teams lose hours to copying, checking and chasing. Your email, documents and apps feed one workflow, and the agent spots the work, drafts the action and sends it to the right person.": "La mayoría de los equipos pierde horas copiando, revisando y persiguiendo. Tu correo, documentos y apps alimentan un solo flujo, y el agente detecta la tarea, prepara la acción y la envía a la persona indicada.", "Once approved, it carries the work across your connected systems. Every action is logged, so you can see what it did, when and why.": "Una vez aprobada, la ejecuta en tus sistemas conectados. Cada acción queda registrada, así ves qué hizo, cuándo y por qué.", "Start with the work your team repeats every day.": "Empieza por el trabajo que tu equipo repite cada día.", "Orders checked against stock and routed": "Pedidos verificados contra inventario y enrutados", "Tickets triaged and replies drafted": "Tickets clasificados y respuestas redactadas", "Invoices matched to purchase orders": "Facturas conciliadas con órdenes de compra", "CRM updated after every call": "CRM actualizado después de cada llamada", "Candidates screened, onboarding packs sent": "Candidatos filtrados y paquetes de bienvenida enviados", "Shipment updates sent to customers": "Avisos de envío enviados a clientes", "Alerts triaged with context attached": "Alertas clasificadas con contexto", "Cost reports and cleanup tickets": "Reportes de costos y tickets de limpieza", "CRM updated after call": "CRM actualizado tras llamada", "1 week. Map the workflow, set the baseline, fixed quote.": "1 semana. Mapeo del proceso, línea base y precio cerrado.", "2 to 3 weeks. The agent drafts, your team approves every action.": "2 a 3 semanas. El agente prepara, tu equipo aprueba cada acción.", "Hardened, secured and monitored in your cloud.": "Endurecido, seguro y monitoreado en tu nube.", "Code, prompts, runbooks and training are yours.": "Código, prompts, runbooks y capacitación son tuyos.", "Monthly report against the baseline, new automations from your queue.": "Informe mensual contra la línea base y nuevas automatizaciones de tu lista.", "No agent yet": "Aún sin agente", "Shadow mode": "Modo sombra", "Supervised": "Supervisado", "Autonomous": "Autónomo", "Agree the goalHours saved, errors avoided or cycle time cut. We pick one and write it down.": "<b>Acordar la meta</b>Horas ahorradas, errores evitados o tiempo de ciclo reducido. Elegimos una y la dejamos por escrito.", "Set the baselineWe measure how the work runs today, in your own data.": "<b>Fijar la línea base</b>Medimos cómo funciona el trabajo hoy, con tus propios datos.", "Measure the resultAfter launch we report against the baseline, so you can see the change.": "<b>Medir el resultado</b>Tras el lanzamiento informamos frente a la línea base, para que veas el cambio.", "Show more from the feed": "Ver más novedades", "Book my AI Fit Call": "Agendar mi AI Fit Call", "Audit": "Auditar","Pricing": "Precios", "Method": "Método", "Our work": "Proyectos", "Book a call": "Agendar llamada", "W3 Basics · Updated concept": "W3 Basics · Concepto actualizado", "Book a free AI Fit Call": "Agenda tu AI Fit Call gratis", "See pricing": "Ver precios", "Built by the DevOps, cloud and Kubernetes team trusted by Archie, Ocho and GMT Engineering.": "Hecho por el equipo de DevOps, nube y Kubernetes en el que confían <b>Archie</b>, <b>Ocho</b> y <b>GMT Engineering</b>.", "Your team approves. The agent does the work.": "Tu equipo aprueba. El agente hace el trabajo.", "The agent spots the work, drafts the action and sends it to the right person. Once approved, it carries the work across your connected systems.": "El agente detecta la tarea, prepara la acción y la envía a la persona indicada. Una vez aprobada, la ejecuta en tus sistemas conectados.", "Every action is logged, so you can see what it did, when and why.": "Cada acción queda registrada, así ves qué hizo, cuándo y por qué.", "Why W3 Basics": "Por qué W3 Basics", "Built like infrastructure, not a demo.": "Construido como infraestructura, no como una demo.", "Most automation agencies stop at a no-code flow. We ship agents the way we ship production systems.": "La mayoría de agencias se quedan en un flujo no-code. Nosotros entregamos agentes como entregamos sistemas en producción.", "Runs in your cloud": "Corre en tu nube", "Deployed to your AWS, Google Cloud or Azure account with Terraform and CI/CD, backed by more than 10 years of DevOps practice.": "Desplegado en tu cuenta de AWS, Google Cloud o Azure con Terraform y CI/CD, con más de 10 años de práctica DevOps.", "Secure by default": "Seguro por defecto", "Least-privilege access, secrets kept out of prompts and a log of every action the agent takes.": "Acceso de mínimo privilegio, secretos fuera de los prompts y registro de cada acción del agente.", "Tested before it acts": "Probado antes de actuar", "Every change to a prompt or an agent passes automated checks before it reaches your team.": "Cada cambio a un prompt o a un agente pasa pruebas automáticas antes de llegar a tu equipo.", "Yours to keep": "Es tuyo", "Code, prompts, infrastructure and runbooks are handed over with training. No lock-in.": "Código, prompts, infraestructura y runbooks se entregan con capacitación. Sin dependencia.", "Start small. Prove it. Then scale.": "Empieza pequeño. Demuéstralo. Luego escala.", "Free": "Gratis", "Start here": "Empieza aquí", "AI Audit": "Auditoría de IA", "Pilot Sprint": "Sprint piloto", "Production": "Producción", "Operate": "Operación", "30 minutes. We pick one workflow and tell you plainly whether it is worth automating.": "30 minutos. Elegimos un proceso y te decimos con claridad si vale la pena automatizarlo.", "One week. We map the workflow in your own data, set the baseline and give you a fixed quote. Credited in full to your Pilot.": "Una semana. Mapeamos el proceso con tus propios datos, fijamos la línea base y te damos un precio cerrado. Se abona completo a tu piloto.", "from $6,000": "desde $6,000", "Two to three weeks. One workflow running, with your team approving every action, measured against the baseline.": "Dos a tres semanas. Un proceso funcionando, con tu equipo aprobando cada acción, medido contra la línea base.", "from $15,000per workflow": "desde $15,000<small>por proceso</small>", "Hardened, monitored and security-reviewed in your cloud, then handed over with training.": "Endurecido, monitoreado y revisado en seguridad en tu nube, y entregado con capacitación.", "from $1,500/ month": "desde $1,500<small>/ mes</small>", "Monitoring, a monthly report against the baseline and new automations from your queue. Cancel anytime.": "Monitoreo, un informe mensual contra la línea base y nuevas automatizaciones de tu lista. Cancela cuando quieras.", "Prices in USD. Claude licences and cloud usage are billed at cost, with no markup.": "Precios en USD. Las licencias de Claude y el uso de nube se cobran al costo, sin recargo.", "Book a free AI Fit Call →": "<a class='btn amber' href='#contact'>Agenda tu AI Fit Call gratis →</a>", "Agents earn trust step by step.": "Los agentes se ganan la confianza paso a paso.", "Each phase starts only when the last one beats its baseline. Agents begin in shadow mode and work on their own only after they pass the checks we agree with you.": "Cada fase empieza solo cuando la anterior supera su línea base. Los agentes empiezan en modo sombra y trabajan solos solo después de pasar las pruebas que acordamos contigo.", "Audit": "Auditar", "Prove": "Probar", "Ship": "Lanzar", "Hand over": "Entregar", "Improve": "Mejorar", "Map · Baseline · Fixed quote": "Mapa · Línea base · Precio cerrado", "Shadow mode · Your team approves": "Modo sombra · Tu equipo aprueba", "Supervised · Secured · Monitored": "Supervisado · Seguro · Monitoreado", "Code · Prompts · Runbooks · Training": "Código · Prompts · Runbooks · Capacitación", "Autonomous with exceptions · Monthly report": "Autónomo con excepciones · Informe mensual", "Teams that already trust us with production.": "Equipos que ya nos confían su producción.", "View project": "Ver proyecto", "A DevOps setup with branching, versioning and CI/CD pipelines across the software lifecycle.": "Una base DevOps con ramas, versionado y pipelines de CI/CD en todo el ciclo de software.", "A custom AWS platform with defined DevOps processes for fast, reliable releases.": "Una plataforma a medida en AWS con procesos DevOps definidos para entregas rápidas y confiables.", "A secure, cost-effective AWS architecture in Terraform, with a custom CI/CD process run from Slack.": "Una arquitectura AWS segura y eficiente en costos con Terraform, y un proceso de CI/CD operado desde Slack.", "Where do we start?": "¿Por dónde empezamos?", "Book the free AI Fit Call. If there is a workflow worth automating, the AI Audit maps it and gives you a fixed quote.": "Agenda la AI Fit Call gratis. Si hay un proceso que valga la pena automatizar, la Auditoría de IA lo mapea y te da un precio cerrado.", "What does it cost?": "¿Cuánto cuesta?", "The AI Audit is $1,500 and is credited to your Pilot. Pilots start at $6,000 and production at $15,000 per workflow. Claude and cloud usage are billed at cost.": "La Auditoría de IA cuesta $1,500 y se abona a tu piloto. Los pilotos empiezan en $6,000 y producción en $15,000 por proceso. Claude y la nube se cobran al costo.", "Will the AI act without our approval?": "¿La IA actuará sin nuestra aprobación?", "Not until you decide it should. Every agent starts in shadow mode, then supervised, and works on its own only after it passes the checks we agree with you.": "No hasta que tú lo decidas. Cada agente empieza en modo sombra, luego supervisado, y trabaja solo después de pasar las pruebas que acordamos contigo.", "Who owns what you build?": "¿De quién es lo que construyen?", "You do. Code, prompts, infrastructure and runbooks are handed over at the end of every project.": "Tuyo. Código, prompts, infraestructura y runbooks se entregan al final de cada proyecto.", "Do we need engineers on our side?": "¿Necesitamos ingenieros de nuestro lado?", "No. We build and run it, and train your team to extend it.": "No. Nosotros lo construimos y operamos, y capacitamos a tu equipo para ampliarlo.", "Will it replace our systems?": "¿Reemplaza nuestros sistemas?", "No. It works on top of the tools you already use.": "No. Funciona sobre las herramientas que ya usas.", "Which AI do you use?": "¿Qué IA usan?", "Claude, by Anthropic, through your Claude workspace or Amazon Bedrock in your own AWS account.": "Claude, de Anthropic, a través de tu espacio de Claude o de Amazon Bedrock en tu propia cuenta de AWS.", "Do you work in Spanish?": "¿Trabajan en español?", "Yes. We work in English and Spanish with teams across the US and Latin America.": "Sí. Trabajamos en inglés y español con equipos en Estados Unidos y Latinoamérica.", "How the new Job success policy lets a batch job finish when the pods that matter succeed.": "Cómo la nueva política de éxito de Jobs permite terminar un proceso por lotes cuando los pods clave tienen éxito.", "Retry limits per index for indexed Jobs, so one failing shard no longer stops the rest.": "Límites de reintento por índice en Jobs indexados, para que una partición fallida no detenga al resto.", "Volume populators reach GA, making it easier to create volumes pre-filled with data.": "Los volume populators llegan a GA y facilitan crear volúmenes con datos precargados.", "News stories link to their original sources.": "Las noticias enlazan a sus fuentes originales.", "Every team has work that eats time and adds nothing. A free 30-minute AI Fit Call shows which workflow to automate first. No new infrastructure needed.": "Todo equipo tiene trabajo que consume tiempo y no aporta nada. Una AI Fit Call gratis de 30 minutos te muestra qué proceso automatizar primero. Sin infraestructura nueva.", "The workflow worth automating first": "El proceso que conviene automatizar primero", "A straight answer on fit, with reasons": "Una respuesta clara sobre si encaja, con razones", "What the AI Audit would measure and cost": "Qué mediría la Auditoría de IA y cuánto costaría", "Request your AI Fit Call": "Solicita tu AI Fit Call", "Schedule a 30-minute call": "Agenda una llamada de 30 minutos", "We could not send that. Please try again in a moment.": "No pudimos enviarlo. Inténtalo de nuevo en un momento.", "Privacy policy": "Política de privacidad", "Contact": "Contacto","Full article coming soon":"Artículo completo próximamente","Anthropic · May 2026":"Anthropic · mayo 2026","Anthropic · Jan 2026":"Anthropic · ene 2026","Anthropic Economic Index · Jan 2026":"Anthropic Economic Index · ene 2026","Anthropic launches Claude for Small Business":"Anthropic lanza Claude for Small Business","Built on Claude Cowork, it adds prebuilt workflows and connectors to tools like QuickBooks and HubSpot. People approve each plan before anything is sent or paid. Source: Axios.":"Construido sobre Claude Cowork, suma flujos de trabajo prediseñados y conectores a herramientas como QuickBooks y HubSpot. Las personas aprueban cada plan antes de enviar o pagar algo. Fuente: Axios.","Augmentation edges out automation in how people use Claude":"La aumentación supera a la automatización en cómo se usa Claude","Anthropic’s report found 52% of Claude.ai conversations were augmentation and 45% automation, and success rates fall as tasks get longer.":"El informe de Anthropic halló que el 52% de las conversaciones en Claude.ai fueron de aumentación y el 45% de automatización, y que la tasa de éxito baja a medida que las tareas son más largas.","Claude Cowork brings agent work to everyday tasks":"Claude Cowork lleva el trabajo con agentes a las tareas del día a día","A preview that lets Claude read, edit and organize files in a folder you choose, and asks before destructive actions. Source: PYMNTS.":"Una vista previa que permite a Claude leer, editar y organizar archivos en una carpeta que tú eliges, y pide confirmación antes de acciones destructivas. Fuente: PYMNTS.","Apps":"Aplicaciones","Your name":"Tu nombre","Your email":"Tu correo","So we can write back":"Para poder responderte","Your message":"Tu mensaje","Send message":"Enviar mensaje","Thanks! Your message was sent. We will write back personally.":"¡Gracias! Tu mensaje fue enviado. Te responderemos personalmente.","We could not send that. Please email NexusLocal1@gmail.com directly.":"No pudimos enviarlo. Escríbenos a NexusLocal1@gmail.com directamente.","Step 1":"Paso 1","Step 2":"Paso 2","Step 3":"Paso 3","Step 4":"Paso 4","Step 5":"Paso 5","Who it's for": "Para quién", "How it works": "Cómo funciona", "Engage": "Servicios", "Process": "Proceso", "FAQ": "FAQ", "Feed": "Novedades", "Get started": "Comenzar", "Announcing W3 Basics": "Presentamos W3 Basics", "From AI ideas to AI that does the work.": "De ideas de IA a IA que hace el trabajo.", "AI shows you what to fix.": "La IA te muestra qué corregir.", "W3 Basics makes it happen.": "W3 Basics lo hace realidad.", "Book your free AI audit": "Reserva tu auditoría gratis", "See how it works": "Así funciona", "We connect your data, put Claude to work on it, and keep a person in charge. You stay in command. We handle the rest.": "Conectamos tus datos, ponemos a Claude a trabajar con ellos y mantenemos a una persona al mando. <b style=\"color:var(--ink)\">Tú tienes el control. Nosotros nos encargamos del resto.</b>", "Your tools": "Tus herramientas", "and data": "y datos", "agents": "agentes", "Human": "Criterio", "judgement": "humano", "Inbox": "Correo", "Documents": "Documentos", "Done,": "Listo,", "on time": "a tiempo", "Email": "Correo", "Imagine your busywork, handled.": "Imagina tu trabajo repetitivo, resuelto.", "Most teams lose hours to copying, checking and chasing. W3 Basics builds AI automations that do it for you and ask a person only when it matters.": "La mayoría de los equipos pierde horas copiando, revisando y persiguiendo. <b>W3 Basics crea automatizaciones de IA</b> que lo hacen por ti y consultan a una persona solo cuando importa.", "Your email, documents and apps feed one workflow. Claude reads, decides and acts. You stay in control.": "Tu correo, tus documentos y tus apps alimentan un solo flujo de trabajo. Claude lee, decide y actúa. Tú mantienes el control.", "Where it fits": "Dónde encaja", "Operations": "Operaciones", "Support": "Soporte", "Finance": "Finanzas", "Sales": "Ventas", "People": "Personas", "Logistics": "Logística", "Security": "Seguridad", "Cloud": "Nube", "Automation inbox": "Bandeja de automatización", "Invoices checked": "Facturas revisadas", "Done": "Listo", "Support tickets routed": "Tickets de soporte enrutados", "Contract summary": "Resumen de contrato", "Needs approval": "Requiere aprobación", "Illustrative example": "Ejemplo ilustrativo", "Today": "Hoy", "Human judgement at machine speed.": "Criterio humano a velocidad de máquina.", "From insight to action. Automatically. Knowing what to do is only half the battle.": "<b>De la idea a la acción. Automáticamente.</b> Saber qué hacer es solo la mitad de la batalla.", "The agent spots the work, drafts the action and routes it to the right person for approval. Once approved, it carries the work across your connected systems.": "El agente detecta el trabajo, prepara la acción y la envía a la persona adecuada para su aprobación. Una vez aprobada, la ejecuta en tus sistemas conectados.", "You stay in command. We handle the coordination.": "<b>Tú tienes el control. Nosotros nos encargamos de la coordinación.</b>", "The anatomy of an AI automation": "Anatomía de una automatización con IA", "It sits on top of the systems and processes you already use. It connects your data, applies the rules of your business and takes action.": "Se apoya en los sistemas y procesos que ya usas. Conecta tus datos, aplica las reglas de tu negocio y actúa.", "Interaction": "Interacción", "Workflows": "Flujos de trabajo", "Intelligence": "Inteligencia", "Your systems": "Tus sistemas", "Chat, approvals, notifications": "Chat, aprobaciones, notificaciones", "Where your people stay in control": "Donde tu gente mantiene el control", "Your processes and rules": "Tus procesos y reglas", "Configured for your business": "Configurado para tu negocio", "Claude agents": "Agentes de Claude", "Read, decide, act": "Leer, decidir, actuar", "Engagement": "Colaboración", "Three ways to work with us.": "Tres formas de trabajar con nosotros.", "Audit": "Auditoría", "Find the first workflow worth automating.": "Encuentra el primer flujo que vale la pena automatizar.", "Build": "Construcción", "A working automation or agent, shipped and handed over.": "Una automatización o agente funcionando, entregado y transferido.", "Partner": "Alianza", "Ongoing engineering as your automation grows.": "Ingeniería continua a medida que crece tu automatización.", "Let's talk! →": "<a class='btn amber' href='#contact'>¡Hablemos! →</a>", "How an engagement runs.": "Cómo funciona un proyecto.", "Prototype": "Prototipo", "Production": "Producción", "Handover": "Entrega", "Iteration": "Iteración", "Continuous": "Mejora", "improvement": "continua", "Assess · Evaluate · Scope": "Diagnosticar · Evaluar · Definir alcance", "Build · Test · Validate": "Construir · Probar · Validar", "Deploy · Scale · Launch": "Desplegar · Escalar · Lanzar", "Train · Document · Transfer": "Capacitar · Documentar · Transferir", "Analyze · Refine · Enhance": "Analizar · Refinar · Mejorar", "Example engagement. Timing is set after the audit.": "Ejemplo de proyecto. Los plazos se definen después de la auditoría.", "Results": "Resultados", "Clear goals before we begin.": "Metas claras antes de empezar.", "We agree what success looks like first, so every gain is measured against a starting point, not guessed.": "Primero acordamos cómo se ve el éxito, para medir cada mejora frente a un punto de partida y no a suposiciones.", "Agree the goal": "Acordar la meta", "Hours saved, errors avoided or cycle time cut. We pick one and write it down.": "Horas ahorradas, errores evitados o tiempo de ciclo reducido. Elegimos una y la dejamos por escrito.", "Set the baseline": "Fijar la línea base", "We measure how the work runs today, in your own data.": "Medimos cómo funciona el trabajo hoy, con tus propios datos.", "Measure the result": "Medir el resultado", "After launch we report against the baseline, so you can see the change.": "Tras el lanzamiento informamos frente a la línea base, para que veas el cambio.", "Frequently asked questions": "Preguntas frecuentes", "Where do we start?": "¿Por dónde empezamos?", "A free AI audit. We map your workflows and pick the first one worth automating.": "Con una auditoría de IA gratuita. Mapeamos tus flujos de trabajo y elegimos el primero que vale la pena automatizar.", "Do we need engineers on our side?": "¿Necesitamos ingenieros de nuestro lado?", "No. We build and run it, and train your team to extend it.": "No. Lo construimos y lo operamos, y capacitamos a tu equipo para ampliarlo.", "Will it replace our systems?": "¿Reemplazará nuestros sistemas?", "No. It works on top of the tools you already use.": "No. Funciona sobre las herramientas que ya usas.", "How fast can we see something working?": "¿Qué tan pronto veremos algo funcionando?", "Prototypes in days. We scope production timelines after the audit.": "Prototipos en días. Definimos los plazos de producción después de la auditoría.", "The W3 Basics Feed": "Novedades W3 Basics", "Where mid-sized companies should start with AI automation": "Por dónde deben empezar las empresas medianas con la automatización con IA", "Pick one repetitive workflow, set a baseline and prove the gain before you scale…": "Elige un flujo repetitivo, fija una línea base y demuestra la mejora antes de escalar…", "Building with Claude Cowork: what we learned shipping fast": "Construir con Claude Cowork: lo que aprendimos entregando rápido", "How small teams go from idea to a working internal tool in days, not months…": "Cómo los equipos pequeños pasan de la idea a una herramienta interna funcional en días, no meses…", "Measuring the return on an automation before you build it": "Medir el retorno de una automatización antes de construirla", "A simple way to size the hours, errors and delays you can take out of a process…": "Una forma sencilla de dimensionar las horas, errores y demoras que puedes quitar de un proceso…", "Read more…": "Leer más…",  "What should your team stop doing by hand?": "¿Qué debería dejar de hacer tu equipo a mano?", "Every team has work that eats time and adds nothing. A free AI audit shows exactly which work to automate first. No new infrastructure needed.": "Todo equipo tiene trabajo que consume tiempo y no aporta nada. Una auditoría de IA gratuita muestra exactamente qué automatizar primero. No se necesita infraestructura nueva.", "A short list of the workflows worth automating": "Una lista corta de los flujos que vale la pena automatizar", "The first one we would build, and why": "El primero que construiríamos, y por qué", "A clear goal and baseline to measure against": "Una meta clara y una línea base para medir", "Request your assessment": "Solicita tu evaluación", "First name*": "Nombre*", "Last name*": "Apellido*", "Work email*": "Correo de trabajo*", "Company*": "Empresa*", "Focus area*": "Área de enfoque*", "What would you like to solve?": "¿Qué te gustaría resolver?", "Concept page: nothing was sent.": "Página de concepto: no se envió nada.", "Your Company, Inc.": "Tu Empresa, Inc.", "Street address, City, State ZIP": "Dirección, ciudad, estado, C.P.", "Legal": "Legal", "Contact": "Contacto", "Careers": "Empleo", "Request an AI summary of W3 Basics": "Solicita un resumen de W3 Basics con IA", "© 2026 Your Company, Inc.": "© 2026 Tu Empresa, Inc."};
+var saved=[];
+function norm(t){return t.replace(/\s+/g,' ').trim()}
+function walk(el){
+  var tn=el.tagName;if(tn==='SCRIPT'||tn==='STYLE'||tn==='INPUT'||tn==='TEXTAREA'||tn==='SELECT'&&false)return;
+  var k=norm(el.textContent||'');
+  if(k&&Object.prototype.hasOwnProperty.call(D,k)&&el.id!=='f'&&!el.querySelector('input,textarea,select,svg')){saved.push([el,el.innerHTML]);el.innerHTML=D[k];return}
+  for(var i=0;i<el.children.length;i++)walk(el.children[i]);
+}
+function setLang(l){
+  for(var i=saved.length-1;i>=0;i--)saved[i][0].innerHTML=saved[i][1];
+  saved=[];
+  if(l==='es')walk(document.body);
+  document.documentElement.lang=l;
+  var b=document.querySelectorAll('.lang button');
+  for(var j=0;j<b.length;j++)b[j].setAttribute('aria-pressed',b[j].getAttribute('data-l')===l?'true':'false');
+  try{localStorage.setItem('w3-lang',l)}catch(e){}
+}
+document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest('.lang button');if(t)setLang(t.getAttribute('data-l'))});
+var st='en';try{st=localStorage.getItem('w3-lang')||'en'}catch(e){}
+var q=(location.hash||'').toLowerCase();
+if(st==='es')setLang('es');
+})();
+</script>
+
+</body></html>
