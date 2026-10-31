@@ -287,7 +287,7 @@ function norm(t){return t.replace(/\s+/g,' ').trim()}
 function walk(el){
   var tn=el.tagName;if(tn==='SCRIPT'||tn==='STYLE'||tn==='INPUT'||tn==='TEXTAREA'||tn==='SELECT'&&false)return;
   var k=norm(el.textContent||'');
-  if(k&&Object.prototype.hasOwnProperty.call(D,k)&&el.id!=='f'&&!el.querySelector('input,textarea,select,svg')){saved.push([el,el.innerHTML]);el.innerHTML=D[k];return}
+  if(k&&Object.prototype.hasOwnProperty.call(D,k)&&el.id!=='f'&&tn!=='svg'&&!el.querySelector('input,textarea,select,svg')){saved.push([el,el.innerHTML]);el.innerHTML=D[k];return}
   for(var i=0;i<el.children.length;i++)walk(el.children[i]);
 }
 function setLang(l){
