@@ -1,6 +1,6 @@
 # W3 Basics Feed: rules for updating
 
-The Feed is the "The W3 Basics Feed" section (`#feed`) of the W3 Basics site. It holds six cards: up to three outside stories and three W3 Basics perspective pieces. Follow these rules each time the Feed changes.
+The Feed is the "The W3 Basics Feed" section (`#feed`) of the W3 Basics site. It holds six cards, all outside stories at the moment. Follow these rules each time the Feed changes.
 
 ## 1. What goes in the Feed
 - **Outside story**: news or research about AI automation, Claude, or how mid-sized companies adopt AI. It must come from the original publisher or a reputable outlet and must link to that source.
@@ -27,7 +27,7 @@ The Feed is the "The W3 Basics Feed" section (`#feed`) of the W3 Basics site. It
 ```
 
 ## 4. Order, size and freshness
-- Newest outside story first, then older ones, then W3 Basics perspective pieces. Keep the card count at six, so the grid is two full rows of three.
+- Newest outside story first, then older ones, then W3 Basics perspective pieces. Keep the card count at six (two full rows of three).
 - Review the Feed on the first working day of each month. Replace any outside story older than 12 months, or earlier if it is superseded.
 - A W3 Basics perspective piece that still says "coming soon" after 90 days is either written or removed.
 
