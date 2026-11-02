@@ -1,16 +1,16 @@
-# W3 Basics Feed: rules for updating
+# GDS Feed: rules for updating
 
-The Feed is the "The W3 Basics Feed" section (`#feed`) of the W3 Basics site. It holds six cards, all outside stories at the moment. Follow these rules each time the Feed changes.
+The Feed is the "The GDS Feed" section (`#feed`) of the GDS site. It holds six cards, all outside stories at the moment. Follow these rules each time the Feed changes.
 
 ## 1. What goes in the Feed
 - **Outside story**: news or research about AI automation, Claude, or how mid-sized companies adopt AI. It must come from the original publisher or a reputable outlet and must link to that source.
-- **W3 Basics perspective**: our own point of view. It is labeled "W3 Basics perspective" and shows "Full article coming soon" until the article exists. Once it exists, replace that line with a "Read more..." link.
+- **GDS perspective**: our own point of view. It is labeled "GDS perspective" and shows "Full article coming soon" until the article exists. Once it exists, replace that line with a "Read more..." link.
 - Never include client names, client results or numbers we cannot prove. No invented quotes, statistics or case studies.
 
 ## 2. Accuracy checks before adding a card
 1. Open the source and confirm every fact on the card appears there. Figures are copied exactly, with the report or article date.
 2. Name the source in the card (tag line or last sentence of the summary).
-3. Describe what the source says, not what we wish it said. No claim that W3 Basics or Claude guarantees results.
+3. Describe what the source says, not what we wish it said. No claim that GDS or Claude guarantees results.
 4. If the source is a vendor announcement, keep the wording neutral ("launches", "reports"), not promotional.
 
 ## 3. Card format
@@ -27,9 +27,9 @@ The Feed is the "The W3 Basics Feed" section (`#feed`) of the W3 Basics site. It
 ```
 
 ## 4. Order, size and freshness
-- Newest outside story first, then older ones, then W3 Basics perspective pieces. Keep the card count at six (two full rows of three).
+- Newest outside story first, then older ones, then GDS perspective pieces. Keep the card count at six (two full rows of three).
 - Review the Feed on the first working day of each month. Replace any outside story older than 12 months, or earlier if it is superseded.
-- A W3 Basics perspective piece that still says "coming soon" after 90 days is either written or removed.
+- A GDS perspective piece that still says "coming soon" after 90 days is either written or removed.
 
 ## 5. English and Spanish
 - Every new text string needs an entry in the Spanish dictionary (`var D`), keyed by the exact English text.

@@ -22,10 +22,10 @@ module.exports = async (req, res) => {
     method: 'POST',
     headers: { Authorization: 'Bearer ' + process.env.RESEND_API_KEY, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: process.env.CONTACT_FROM || 'W3 Basics <onboarding@resend.dev>',
+      from: process.env.CONTACT_FROM || 'GDS <onboarding@resend.dev>',
       to: [process.env.CONTACT_TO || 'ceq@me.com'],
       reply_to: email,
-      subject: 'W3 Basics contact form: ' + name + (company ? ' (' + company + ')' : ''),
+      subject: 'GDS contact form: ' + name + (company ? ' (' + company + ')' : ''),
       html: '<p><b>Name:</b> ' + esc(name) + '</p><p><b>Email:</b> ' + esc(email) + '</p><p><b>Company:</b> ' + esc(company) + '</p><p><b>Focus area:</b> ' + esc(focus) + '</p><p><b>What they want to solve:</b></p><p>' + esc(message).replace(/\n/g, '<br>') + '</p>',
     }),
   });
